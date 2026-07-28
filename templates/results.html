@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Results</title>
+</head>
+
+<body>
+
+    <h1>Search Results</h1>
+
+    <h3>Keyword: "{{ keyword }}"</h3>
+
+    <hr>
+
+    {% if results %}
+
+        {% for article in results %}
+
+            <h2>{{ article.title }}</h2>
+
+            <p><strong>Category:</strong> {{ article.category }}</p>
+
+            <p><strong>Sentiment:</strong> {{ article.sentiment }}</p>
+
+            <p><strong>Summary:</strong></p>
+
+            <p>{{ article.summary }}</p>
+
+            <p><strong>Keywords:</strong>
+                {{ article.keywords | join(", ") }}
+            </p>
+
+            <p>
+                <strong>URL:</strong>
+                <a href="{{ article.url }}" target="_blank">
+                    {{ article.url }}
+                </a>
+            </p>
+
+            <hr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <h2>No articles found.</h2>
+
+    {% endif %}
+
+    <br>
+
+    <a href="/">← Back to Search</a>
+
+</body>
+
+</html>
